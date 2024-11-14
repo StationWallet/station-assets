@@ -1,16 +1,16 @@
-FROM node:18 as assets-builder
+FROM node:18 AS assets-builder
 
 WORKDIR /assets
 
 RUN set -eux && \
-    git clone https://github.com/terra-money/assets.git ./
+    git clone https://github.com/stationwallet/assets.git ./
 
 RUN set -eux && \
     npm install && \
     npm run build
 
 ###############################################################################
-FROM node:18 as station-assets-builder
+FROM node:18 AS station-assets-builder
 
 ARG CF_PAGES_URL="https://station-assets.pages.dev"
 ARG FND_BASE_URL="https://finder.station.money"
